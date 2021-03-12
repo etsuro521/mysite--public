@@ -1,0 +1,9 @@
+{% extends 'base/base.html' %}
+{% block title %}理科大掲示板 - {{ block.super }}{% endblock %}
+{% block content %}
+<div class="my-3 p-3 bg-white rounded shadow-sm">
+    <p>ログアウトしました</p>
+        <a href="{% url 'base:top' %}">TOPへ戻る</a>
+</div>
+
+{% endblock %}

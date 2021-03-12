@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+{% block title %}ユーザー登録 - {{ block.super }}{% endblock %}
+{% block content %}
+<div class="my-3 p-3 bg-white rounded shadow-sm">
+    <div class="blog-post">
+        <div class="card-body">
+            <h5>ユーザー登録</h5>
+            <hr>
+            <form class="" action="" method="POST">
+                {% csrf_token %}
+                {% for field in form %}
+                {{field.label_tag}}<div class="form-group">{{field}}</div>
+                {% for error in field.errors%}
+                <p class="text-danger">{{error}}</p>
+                {% endfor%}
+                {% endfor%}
+                <button type="submit" class="btn btn-outline-primary" name="next" value="confirm">確認</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

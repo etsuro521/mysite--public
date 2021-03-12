@@ -1,0 +1,25 @@
+{% extends 'base/base.html' %}
+{% block title %}検索結果 - {{ block.super }}{% endblock %}
+{% block content %}
+<div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">検索結果</h6>
+    {% if result_list %}
+    {% for result in result_list %}
+    <div class="media text-muted pt-3">
+        <img data-src="holder.js/32x32?theme=thumb&amp;bg=007bff&amp;fg=007bff&amp;size=1" alt="" class="mr-2 rounded">
+        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            <a href="{% url 'thread:topic' pk=result.id %}"><strong class="d-block text-gray-dark">{{result.title}}</strong></a>
+            {{result.category}}
+        </p>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="media text-muted pt-3">
+        <img data-src="holder.js/32x32?theme=thumb&amp;bg=007bff&amp;fg=007bff&amp;size=1" alt="" class="mr-2 rounded">
+        <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            トピックが存在しません
+        </p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

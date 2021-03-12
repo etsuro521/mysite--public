@@ -1,0 +1,39 @@
+{% extends 'base/base.html' %}
+{% block title %}ユーザー登録 - {{ block.super }}{% endblock %}
+{% block content %}
+<div class="my-3 p-3 bg-white rounded shadow-sm">
+    <div class="blog-post">
+        <div class="card-body">
+            <table  class="table table-bordered">
+                <thead>
+                    <tr>
+                        確認画面
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">お名前</th>
+                        <td colspan="2">{{form.cleaned_data.username}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">学科名</th>
+                        <td colspan="2">{{form.cleaned_data.category}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">パスワード</th>
+                        <td colspan="2">*************</td>
+                    </tr>
+                </tbody>
+            </table>
+            <form class="" action="" method="POST">
+                {% csrf_token %}
+                {% for field in form %}
+                    {{field.as_hidden}}
+                {% endfor %}
+                <button type="submit" class="btn btn-outline-primary" name="next" value="back">修正</button>
+                <button type="submit" class="btn btn-outline-primary" name="next" value="regist">作成</button>
+            </form>         
+        </div>
+    </div>
+</div>
+{% endblock %}

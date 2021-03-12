@@ -1,0 +1,25 @@
+{% extends 'base/base.html' %}
+{% block title %}ログイン - {{ block.super }}{% endblock %}
+{% block content %}
+<div class="my-3 p-3 bg-white rounded shadow-sm">
+    <div class="blog-post">
+        <div class="card-body">
+            <h5>ログイン</h5>
+            <hr>
+            <form class="" action="" method="POST">
+                {% csrf_token %}
+                {% for field in form %}
+                {{field.label_tag}}<div class="form-group">{{field}}</div>
+                {% for error in field.errors%}
+                <p class="text-danger">{{error}}</p>
+                {% endfor%}
+                {% endfor%}
+                <button type="submit" class="btn btn-outline-primary">ログイン</button>
+            </form>
+        </div>
+        <a href="{% url 'accounts:create' %}" class="text-primary">ユーザー登録</a>
+            <img data-src="holder.js/32x32?theme=thumb&amp;bg=007bff&amp;fg=007bff&amp;size=1" alt="" class="mr-2 rounded">
+            <a href="{% url 'accounts:password_reset' %}" class="text-primary">パスワードを忘れた場合</a>
+    </div>
+</div>
+{% endblock %}

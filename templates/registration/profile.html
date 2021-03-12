@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+{% block title %}ユーザー登録 - {{ block.super }}{% endblock %}
+{% block content %}
+<div class="my-3 p-3 bg-white rounded shadow-sm">
+    <div class="blog-post">
+        <div class="card-body">
+            <h5>ユーザー情報</h5>
+            <hr>
+            <ul class="list-group">
+                <li class="list-group-item">学籍番号：{{user.username}}</li>
+                <li class="list-group-item">所属学科学科：{{user.category}}</li>
+                <li class="list-group-item">E-mail：{{user.email}}</li>
+            </ul>
+        </div>
+        <a href="{% url 'accounts:change' %}" class="text-primary">プロフィール変更</a>
+        <img data-src="holder.js/32x32?theme=thumb&amp;bg=007bff&amp;fg=007bff&amp;size=1" alt="" class="mr-2 rounded">
+        <a href="{% url 'accounts:password_change' %}" class="text-primary">パスワード変更</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base/base.html' %}
+{% block title %}トピック作成 - {{ block.super }}{% endblock %}
+{% block content %}
+<div class="my-3 p-3 bg-white rounded shadow-sm">
+    <div class="blog-post">
+        <div class="card-body">
+            <h3>{{topic.title}}</h3>
+            <p class="blog-post-meta">{{topic.created}} by {{topic.user_name}}</p>
+            <p><pre>{{topic.message}}</pre></p>     
+            <hr>
+            <h4>コメント欄</h4>
+            {% if comment_list %}
+            {% for comment in comment_list %}
+            <p class="blog-post-meta">{{comment.created}} by {{comment.user_name}}</p>
+            {% if comment.pub_flg %}
+            <p><pre>{{comment.message}}</pre></p>
+            {% else %}
+            <p class="card-text" style="max-width: 18rem;">このコメントは非常時となりました。</p>
+            {% endif %}
+            {% endfor %}
+            {% else %}
+            <p class="card-text" style="max-width: 18rem;">まだコメントはありません。</p>
+            {% endif %}
+    
+            <hr>
+            <h5>コメント投稿</h5>
+            {% if not user.is_authenticated %}
+            <p class="text-primary">コメントをするには<a href="{% url 'accounts:login' %}">ログイン</a>が必要です</p>
+            {% else %}
+            <form class="" action="" method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-group">{{field}}</div>
+            {% endfor%}
+            <button type="submit" class="btn btn-outline-primary" >コメント投稿</button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
