@@ -1,5 +1,5 @@
 {% extends 'base/base.html' %}
-{% block title %}ユーザー登録 - {{ block.super }}{% endblock %}
+{% block title %}ユーザー登録{% endblock %}
 {% block content %}
 <div class="my-3 p-3 bg-white rounded shadow-sm">
         <div class="card-body">
@@ -7,7 +7,7 @@
                 本登録が完了しました。<br>
                 登録された学籍番号とパスワードでログインしてください。<br>
             </p>
-            <button type="submit" class="btn btn-outline-primary">ログイン</button>
+            <a href="{% url 'accounts:login' %}">ログイン</a>
         </div>
 </div>
 {% endblock %}
